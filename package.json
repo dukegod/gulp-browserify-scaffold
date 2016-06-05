@@ -1,7 +1,7 @@
 {
   "name": "gulp-es6-sass",
   "version": "1.0.0",
-  "description": "gulp ",
+  "description": "gulp es6 sass",
   "scripts": {
     "test": "gulp"
   },
