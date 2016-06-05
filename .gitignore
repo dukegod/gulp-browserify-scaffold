@@ -1,6 +1,9 @@
 # ignore file 
 .DS_Store
+
 node_modules
+
 .sass-cache
+
 dist
 

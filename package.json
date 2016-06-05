@@ -1,0 +1,34 @@
+{
+  "name": "gulp-es6-sass",
+  "version": "1.0.0",
+  "description": "gulp ",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dukegod/gulp-es6-sass.git"
+  },
+  "keywords": [
+    "gulp",
+    "sass",
+    "es6"
+  ],
+  "author": "dukegod",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dukegod/gulp-es6-sass/issues"
+  },
+  "homepage": "https://github.com/dukegod/gulp-es6-sass#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-pug": "^3.0.3",
+    "gulp-ruby-sass": "^2.0.6",
+    "jquery": "^2.2.4",
+    "normalize.css": "^4.1.1",
+    "pug": "^2.0.0-beta2"
+  }
+}
