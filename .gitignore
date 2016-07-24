@@ -1,4 +1,4 @@
-# ignore file 
+# ignore file
 .DS_Store
 
 node_modules
@@ -7,3 +7,8 @@ node_modules
 
 dist
 
+dist/*
+
+./dist
+
+./dist/*
