@@ -1,0 +1,72 @@
+// @import './normalize.scss';
+
+body{
+  font-size: 20px;
+}
+
+@mixin item ($fg, $fs, $fb) {
+  flex-grow: $fg;
+  flex-shrink: $fs;
+  flex-basis: $fb;
+  font-size: 28px;
+  color: #ffffff;
+  width: 100px;
+  height: 100px;
+}
+
+.itemitem{
+  @include item (0, 0, 100px);
+}
+
+.display-box {
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.group {
+  width: 100%;
+  height: 300px;
+  background-color: #222;
+  @extend .display-box;
+  .item1 {
+    @extend .itemitem;
+    background-color: red;
+    transform: translateY(20px) rotate(45deg);
+  }
+  .item2 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item3 {
+    @extend .itemitem;
+    background-color: black;
+  }
+  .item4 {
+    @extend .itemitem;
+    background-color: red;
+  }
+  .item5 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item6 {
+    @extend .itemitem;
+    background-color: black;
+  }
+  .item7 {
+    @extend .itemitem;
+    background-color: red;
+  }
+  .item8 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item9 {
+    @extend .itemitem;
+    background-color: black;
+  }
+}
+
+

@@ -1,0 +1,37 @@
+// flexbox的旧版本样式
+//
+//  flexbox-flex
+@mixin boxbox-flex($bbf){
+  box-flex: $bbf;
+}
+@mixin boxbox-flex-group($bbfg){
+  box-flex-group: $bbfg;
+}
+
+//
+@mixin boxbox-align($bbf){
+  box-align: $bbf;
+}
+
+//
+@mixin boxbox-pack($bbp){
+  box-pack: $bbp;
+}
+
+// flex-direction
+@mixin boxbox-orient($bbo){
+  box-orient: $bbo;
+}
+@mixin boxbox-direction($bbd){
+  box-direction: $bbd;
+}
+
+// == order
+@mixin boxbox-box-ordinal-group($bbog){
+  box-ordinal-group: $bbog;
+}
+
+// no supporting
+@mixin boxbox-box-lines($bbbl){
+  box-lines: $bbbl;
+}

@@ -3,23 +3,27 @@ html
   head
     title init page
     meta(charset="UTF-8")
-    link(rel="stylesheet",href="css/base.css")
-  
+    include metas/meta.pug
+    link(rel="stylesheet",href="css/index.css")
+
   body
-    
-    h1 gulp新的实践
-    
-    article
-      p
-        | 我们使用babel解析es2015
-      p
-        | 我们使用sass书写css
-      p
-        | 我们使用pug书写html模板
-      
+
+    h2 | flex-flow
+    .group
+      .item1 11
+      .item2 2
+      .item3 3
+      .item4 4
+      .item5 5
+      .item6 6
+      .item7 7
+      .item8 8
+      .item9 9
+    hr
+
     footer#time
-    
+
   script(src="js/base.js")
   script.
     getTime();
-   
+

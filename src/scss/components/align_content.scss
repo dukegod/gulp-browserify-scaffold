@@ -1,0 +1,122 @@
+@mixin item ($fg, $fs, $fb) {
+  flex-grow: $fg;
+  flex-shrink: $fs;
+  flex-basis: $fb;
+  font-size: 28px;
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border: 1px solid ghostwhite;
+}
+
+.itemitem{
+  @include item (0, 0, 48px);
+}
+
+.display-box {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content : flex-start;
+  align-items: flex-start;
+}
+
+.group-ac {
+  @extend .display-box;
+  width: 302px;
+  height: 302px;
+  border: 1px solid #000000;
+  background-color: #eee;
+  .item1 {
+    @extend .itemitem;
+    background-color: red;
+  }
+  .item2 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item3 {
+    @extend .itemitem;
+    background-color: black;
+  }
+  .item4 {
+    @extend .itemitem;
+    background-color: red;
+  }
+  .item5 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item6 {
+    @extend .itemitem;
+    background-color: black;
+  }
+  .item7 {
+    @extend .itemitem;
+    background-color: red;
+  }
+  .item8 {
+    @extend .itemitem;
+    background-color: green;
+  }
+  .item9 {
+    @extend .itemitem;
+    background-color: black;
+    align-self: flex-end;
+  }
+}
+
+.box-item{
+  width: 50px;
+  height: 50px;
+}
+
+.group-box-ac {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: start;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #000000;
+  background-color: #eee;
+  .item1 {
+    @extend .box-item;
+    background-color: red;
+  }
+  .item2 {
+    @extend .box-item;
+    background-color: green;
+  }
+  .item3 {
+    @extend .box-item;
+    background-color: black;
+  }
+  .item4 {
+    @extend .box-item;
+    background-color: red;
+  }
+  .item5 {
+    @extend .box-item;
+    background-color: green;
+  }
+  .item6 {
+    @extend .box-item;
+    background-color: black;
+  }
+  .item7 {
+    @extend .box-item;
+    background-color: red;
+  }
+  .item8 {
+    @extend .box-item;
+    background-color: green;
+  }
+  .item9 {
+    @extend .box-item;
+    background-color: black;
+  }
+}
