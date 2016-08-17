@@ -1,5 +1,7 @@
 ## gulp-es6-sass
 
+主要验证es6与css3在实际开发中支持度
+
 目录说明：
 
 - dist 作为开发目录
@@ -20,3 +22,5 @@ jshint 检测代码质量
 sass 编写css，更好的处理继承
 
 autoprefixer作为后期css处理
+
+pages文件作为输出文件夹，按需求加载样式

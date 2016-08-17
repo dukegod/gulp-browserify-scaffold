@@ -1,10 +1,11 @@
-// export data
-export var color = "red";
-export let name = "Nicholas";
-export const magicNumber = 7;
+/**
+ * Created by hui on 16/6/5.
+ */
+
+export const TiTLE = 'welcome';
 
 // export function
-export function sum(num1, num2) {
+export default function sum(num1, num2) {
   return num1 + num2;
 }
 
@@ -28,3 +29,6 @@ function multiply(num1, num2) {
 
 // ...and then export it later
 export { multiply };
+
+
+

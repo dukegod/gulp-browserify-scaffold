@@ -26,14 +26,14 @@ body{
 }
 
 .group {
-  width: 100%;
+  width: 500px;
   height: 300px;
-  background-color: #222;
+  background-color: #eee;
   @extend .display-box;
   .item1 {
     @extend .itemitem;
     background-color: red;
-    transform: translateY(20px) rotate(45deg);
+    transform: rotate(5deg);
   }
   .item2 {
     @extend .itemitem;
