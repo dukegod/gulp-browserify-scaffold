@@ -1,6 +1,19 @@
 // import {a,b} from './example.js'
-import { sum } from  './modules.js';
+// import * as me from './modules.js';
 
-let result = sum(1, 2);
+import { sum } from './modules.js';
+
+import * as Rectangle from './class.js';
+
+import { TiTLE } from './const_name.js';
+
+console.log(TiTLE);
+
+console.log(sum(1,2));
+
+
+document.getElementsByTagName('h1')[0].innerHTML = TiTLE;
+
+// let result = sum(1, 2);
 
 

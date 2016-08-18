@@ -5,9 +5,25 @@ var pug = require('gulp-pug');
 var clean = require('gulp-clean');
 var autoprefixer = require('gulp-autoprefixer');
 var jshint = require('gulp-jshint');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer')
 var browserify = require('browserify');
 var babelify = require('babelify');
-var source = require('vinyl-source-stream');
+
+var eslint = require('gulp-eslint');
+
+gulp.task('eslint', function () {
+  return gulp.src(['./src/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+
+gulp.task('clean', function() {
+  return gulp.src('./dist', { read: false })
+    .pipe(clean());
+});
 
 gulp.task('bfy', function() {
   return browserify({
@@ -18,13 +34,8 @@ gulp.task('bfy', function() {
     .transform(babelify)
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('./dist'));
-});
-
-
-gulp.task('clean', function() {
-  return gulp.src('./dist', { read: false })
-    .pipe(clean());
+    .pipe(buffer())
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('scss', function() {

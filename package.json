@@ -28,6 +28,7 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-jshint": "^2.0.1",
     "gulp-pug": "^3.0.3",
     "gulp-ruby-sass": "^2.0.6",
@@ -35,6 +36,7 @@
     "jshint": "^2.9.2",
     "normalize.css": "^4.1.1",
     "pug": "^2.0.0-beta2",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
 }
