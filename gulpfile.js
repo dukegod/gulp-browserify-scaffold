@@ -6,10 +6,9 @@ var clean = require('gulp-clean');
 var autoprefixer = require('gulp-autoprefixer');
 var jshint = require('gulp-jshint');
 var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer')
+var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var babelify = require('babelify');
-
 var eslint = require('gulp-eslint');
 
 gulp.task('eslint', function () {
@@ -27,7 +26,7 @@ gulp.task('clean', function() {
 
 gulp.task('bfy', function() {
   return browserify({
-      entries: './src/js/index.js',
+      entries: ['./src/js/index.js'],
       extensions: ['.js'],
       debug: true
     })
@@ -45,7 +44,7 @@ gulp.task('scss', function() {
       browsers: ['ios 4', 'ios 5', 'ios 6', 'android 4', 'android 2.2', 'Safari 6', 'Safari 7'],
       cascade: false
     }))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('babel', function() {
@@ -78,4 +77,4 @@ gulp.task('watch', function() {
   gulp.watch('./src/pug/*.pug', ['pug']);
 });
 
-gulp.task('default', ['clean', 'scss', 'bfy', 'pug'])
+gulp.task('default', ['clean', 'scss', 'bfy', 'pug']);

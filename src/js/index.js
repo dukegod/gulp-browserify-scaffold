@@ -11,6 +11,8 @@ console.log(TiTLE);
 
 console.log(sum(1,2));
 
+console.log(Rectangle);
+
 
 document.getElementsByTagName('h1')[0].innerHTML = TiTLE;
 
