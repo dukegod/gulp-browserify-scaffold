@@ -11,12 +11,9 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var eslint = require('gulp-eslint');
 
-gulp.task('eslint', function () {
-  return gulp.src(['./src/**/*.js'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
+var config = [
+
+]
 
 
 gulp.task('clean', function() {
@@ -24,18 +21,41 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
+gulp.task('eslint', function () {
+  return gulp.src(['./src/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
 gulp.task('bfy', function() {
   return browserify({
-      entries: ['./src/js/index.js'],
+      entry: ['./src/js/index.js','./src/js/index2.js','./src/js/index3.js'],
       extensions: ['.js'],
-      debug: true
+      debug: true,
+      transform: {
+        'babel': babelify
+      }
     })
-    .transform(babelify)
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(gulp.dest('./dist/js'));
 });
+
+gulp.task('js', function(){
+  var bundleThis = function(srcArray) {
+    console.log(srcArray);
+    srcArray.forEach(function(e) {
+      var bundle = browserify(['./src/js/' + e + '.js']).transform(babelify).bundle();
+      bundle.pipe(source(e + '_bundle.js'))
+        .pipe(gulp.dest('./dist/js'));
+    });
+  };
+  bundleThis(['index', 'index2', 'index3']);
+});
+
+
 
 gulp.task('scss', function() {
   return sass('./src/scss/pages/*.scss', { style: 'expanded' })
@@ -52,17 +72,14 @@ gulp.task('babel', function() {
     .pipe(babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('./src/js-combiled'));
 });
-
-
 
 gulp.task('jshint', function() {
   return gulp.src('./src/js/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('YOUR_REPORTER_HERE'));
 });
-
 
 gulp.task('pug', function() {
   return gulp.src('./src/pug/*.pug')
@@ -73,8 +90,8 @@ gulp.task('pug', function() {
 gulp.task('watch', function() {
   gulp.watch('./src/scss/pages/*.scss', ['scss']);
   // gulp.watch('./src/js/*.js', ['babel']);
-  gulp.watch('./src/js/*.js', ['bfy']);
+  // gulp.watch('./src/js/*.js', ['bfy']);
   gulp.watch('./src/pug/*.pug', ['pug']);
 });
 
-gulp.task('default', ['clean', 'scss', 'bfy', 'pug']);
+gulp.task('default', ['clean', 'scss', 'js', 'pug']);
