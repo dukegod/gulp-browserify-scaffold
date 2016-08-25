@@ -1,4 +1,4 @@
-## gulp-es6-sass
+## gulp-es6-sass-browserify
 
 主要验证es6与css3在实际开发中支持度
 
