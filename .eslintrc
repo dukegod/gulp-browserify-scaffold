@@ -8,12 +8,13 @@
   "rules": {
     "quotes": [2, "single"],
     "no-extra-semi": 2,
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "no-console":0
   },
   "globals":{
   },
   "extends": "eslint:recommended",
-  "parserOptions": {,
-    "sourceType": "module",
-  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
 }

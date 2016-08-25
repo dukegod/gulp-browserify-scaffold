@@ -10,6 +10,7 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var eslint = require('gulp-eslint');
+var sourcemaps = require('gulp-sourcemaps');
 
 var config = [
 
@@ -38,6 +39,7 @@ gulp.task('bfy', function() {
       }
     })
     .bundle()
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(gulp.dest('./dist/js'));
@@ -47,9 +49,10 @@ gulp.task('js', function(){
   var bundleThis = function(srcArray) {
     console.log(srcArray);
     srcArray.forEach(function(e) {
-      var bundle = browserify(['./src/js/' + e + '.js']).transform(babelify).bundle();
-      bundle.pipe(source(e + '_bundle.js'))
-        .pipe(gulp.dest('./dist/js'));
+      var bundle = browserify(['./src/js/' + e + '.js']).debug(true).transform(babelify).bundle();
+        bundel.pipe(sourcemaps.init({loadMaps: true}));
+        bundle.pipe(source(e + '_bundle.js'));
+        bundle.pipe(gulp.dest('./dist/js'));
     });
   };
   bundleThis(['index', 'index2', 'index3']);

@@ -20,5 +20,7 @@
   "laxbreak": true,
   "expr": true,
   "eqnull": true,
+  "esnext": true,
+  "node": true,
   "loopfunc": true
 }
