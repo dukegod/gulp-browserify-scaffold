@@ -10,7 +10,11 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var eslint = require('gulp-eslint');
+var runSequence = require('run-sequence');
 var sourcemaps = require('gulp-sourcemaps');
+
+
+
 
 var config = [
 
@@ -39,20 +43,44 @@ gulp.task('bfy', function() {
       }
     })
     .bundle()
-    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(gulp.dest('./dist/js'));
 });
 
+// gulp.task('smap', function() {
+//   gulp.src('src/**/*.js')
+//     .pipe(sourcemaps.init())
+//       .pipe()
+//       .pipe()
+//     .pipe(sourcemaps.write('../maps'))
+//     .pipe(gulp.dest('dist'));
+// });
+
+gulp.task('smb', function() {
+  return browserify({
+      entry: ['./src/js/index.js','./src/js/index2.js','./src/js/index3.js'],
+      extensions: ['.js'],
+      debug: true,
+      transform: {
+        'babel': babelify
+      }
+    })
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write('../maps'))
+    .pipe(gulp.dest('./dist/js'));
+});
+
+
 gulp.task('js', function(){
   var bundleThis = function(srcArray) {
     console.log(srcArray);
     srcArray.forEach(function(e) {
-      var bundle = browserify(['./src/js/' + e + '.js']).debug(true).transform(babelify).bundle();
-        bundel.pipe(sourcemaps.init({loadMaps: true}));
-        bundle.pipe(source(e + '_bundle.js'));
-        bundle.pipe(gulp.dest('./dist/js'));
+      var bundle = browserify(['./src/js/' + e + '.js']).transform(babelify).bundle();
+        bundle.pipe(source(e + '_bundle.js')).pipe(gulp.dest('./dist/js'));
     });
   };
   bundleThis(['index', 'index2', 'index3']);
@@ -97,4 +125,8 @@ gulp.task('watch', function() {
   gulp.watch('./src/pug/*.pug', ['pug']);
 });
 
-gulp.task('default', ['clean', 'scss', 'js', 'pug']);
+gulp.task('default', function() {
+  runSequence(
+    'clean', ['scss', 'js', 'bfy', 'pug']
+  ); //end of runSequence
+})

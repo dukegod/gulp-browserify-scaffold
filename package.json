@@ -37,6 +37,7 @@
     "jshint": "^2.9.2",
     "normalize.css": "^4.1.1",
     "pug": "^2.0.0-beta2",
+    "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "zepto-browserify": "^1.1.6-1"
