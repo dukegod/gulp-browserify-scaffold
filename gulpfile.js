@@ -13,9 +13,6 @@ var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
 var sourcemaps = require('gulp-sourcemaps');
 
-
-
-
 var config = [
 
 ]
@@ -35,7 +32,7 @@ gulp.task('eslint', function () {
 
 gulp.task('bfy', function() {
   return browserify({
-      entry: ['./src/js/index.js','./src/js/index2.js','./src/js/index3.js'],
+      entry: ['./src/js/index.js'],
       extensions: ['.js'],
       debug: true,
       transform: {
@@ -57,22 +54,22 @@ gulp.task('bfy', function() {
 //     .pipe(gulp.dest('dist'));
 // });
 
-gulp.task('smb', function() {
-  return browserify({
-      entry: ['./src/js/index.js','./src/js/index2.js','./src/js/index3.js'],
-      extensions: ['.js'],
-      debug: true,
-      transform: {
-        'babel': babelify
-      }
-    })
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./dist/js'));
-});
+// gulp.task('smb', function() {
+//   return browserify({
+//       entry: ['./src/js/index.js','./src/js/index2.js','./src/js/index3.js'],
+//       extensions: ['.js'],
+//       debug: true,
+//       transform: {
+//         'babel': babelify
+//       }
+//     })
+//     .bundle()
+//     .pipe(source('bundle.js'))
+//     .pipe(buffer())
+//     .pipe(sourcemaps.init())
+//     .pipe(sourcemaps.write('../maps'))
+//     .pipe(gulp.dest('./dist/js'));
+// });
 
 
 gulp.task('js', function(){
@@ -83,7 +80,7 @@ gulp.task('js', function(){
         bundle.pipe(source(e + '_bundle.js')).pipe(gulp.dest('./dist/js'));
     });
   };
-  bundleThis(['index', 'index2', 'index3']);
+  bundleThis(['index', 'index_jquery', 'index_zepto']);
 });
 
 

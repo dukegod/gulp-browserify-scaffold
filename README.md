@@ -29,13 +29,10 @@ pages文件作为输出文件夹，按需求加载样式
 
 加载zepto
 
-1;
-
 ```
 $ = require('zepto-browserify').$
 Zepto = require('zepto-browserify').Zepto
 ```
 
-2;
 
-直接把zeptojs放在lib下
+SS
