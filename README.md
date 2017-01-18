@@ -9,23 +9,25 @@
 - cdn  编译压缩上线目录
 
 
-## javascript
+### javascript
 
 使用es6书写代码
 
-jshint 检测代码质量
+eslint 检测代码质量
 
-## css
+### css
 
 使用normalize初始化样式表.
 
-sass 编写css，更好的处理继承
+使用以node-sass为班底的gulp-sass模块管理sass，以保证跨平台也能很好的支持
+
+sass编写css，更好的处理继承
 
 autoprefixer作为后期css处理
 
 pages文件作为输出文件夹，按需求加载样式
 
-## browserify
+### browserify
 
 加载zepto
 
@@ -33,6 +35,8 @@ pages文件作为输出文件夹，按需求加载样式
 $ = require('zepto-browserify').$
 Zepto = require('zepto-browserify').Zepto
 ```
-
-
 SS
+
+### Browsersync
+
+
