@@ -39,4 +39,25 @@ SS
 
 ### Browsersync
 
+作为静态服务器，并且实现各个端口的自动同步加载功能。
+
+### gulp-sass
+
+[gulp-sass](https://www.npmjs.com/package/gulp-sass)
+
+### gulp-sourcemaps
+
+```
+  va r sourcemaps = require('gulp-sourcemaps');
+  gulp.task('sass', function () {
+   return gulp.src('./sass/**/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./css'));
+  });
+```
+
+
+
 

@@ -14,10 +14,9 @@ var browserSync = require('browser-sync').create();
 var reload      = browserSync.reload;
 var sourcemaps = require('gulp-sourcemaps');
 
-var config = [
+// var config = [
 
-]
-
+// ]
 
 gulp.task('clean', function() {
   return gulp.src('./dist', { read: false })
@@ -50,8 +49,12 @@ gulp.task('js', function(){
   var bundleThis = function(srcArray) {
     console.log(srcArray);
     srcArray.forEach(function(e) {
-      var bundle = browserify(['./src/js/' + e + '.js']).transform(babelify).bundle();
-        bundle.pipe(source(e + '_bundle.js')).pipe(gulp.dest('./dist/js'));
+      // var bundle = browserify(['./src/js/' + e + '.js']).transform(babelify).bundle();
+      //   bundle.pipe(source(e + '_bundle.js')).pipe(gulp.dest('./dist/js'));
+        browserify(['./src/js/' + e + '.js'])
+        .transform(babelify).bundle()
+        .pipe(source(e + '_bundle.js'))
+        .pipe(gulp.dest('./dist/js'));
     });
   };
   bundleThis(['index', 'index_zepto']);
@@ -64,18 +67,6 @@ gulp.task('pug', function() {
 });
 
 // scss编译后的css将注入到浏览器里实现更新
-// gulp.task('scss', function(e) {
-//   console.log(e);
-//   return sass('./src/scss/pages/*.scss', { style: 'expanded' })
-//     .pipe(gulp.dest('dist/css'))
-//     .pipe(autoprefixer({
-//       browsers: ['ios 4', 'ios 5', 'ios 6', 'android 4', 'android 2.2', 'Safari 6', 'Safari 7'],
-//       cascade: false
-//     }))
-//     .pipe(gulp.dest('dist/css'))
-//     .pipe(reload({stream: true}));
-// });
-
 gulp.task('scss', function () {
   return gulp.src('./src/scss/pages/*.scss')
     .pipe(sourcemaps.init())
@@ -90,14 +81,6 @@ gulp.task('scss', function () {
     .pipe(reload({stream: true}));
 });
 
-
-// gulp.task('sass', function() {
-//     return gulp.src("app/scss/*.scss")
-//         .pipe(sass())
-//         .pipe(gulp.dest("app/css"))
-//         .pipe(reload({stream: true}));
-// });
-
 gulp.task('babel', function() {
   return gulp.src('./src/js/*.js')
     .pipe(babel({
@@ -106,18 +89,12 @@ gulp.task('babel', function() {
     .pipe(gulp.dest('./src/js-combiled'));
 });
 
-// gulp.task('jshint', function() {
-//   return gulp.src('./src/js/*.js')
-//     .pipe(jshint())
-//     .pipe(jshint.reporter('YOUR_REPORTER_HERE'));
-// });
-
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('browsersync', function() {
     browserSync.init({
         server: './dist'
     });
-    // gulp.watch('app/scss/*.scss', ['scss']);
+    gulp.watch('./src/scss/pages/*.scss', ['scss']);
     gulp.watch('dist/*.html').on('change', reload);
 });
 
