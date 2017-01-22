@@ -45,7 +45,13 @@ SS
 
 [gulp-sass](https://www.npmjs.com/package/gulp-sass)
 
+### gulp-clean-css
+
+处理css的压缩
+
 ### gulp-sourcemaps
+
+给js css 添加sourcemaps支持
 
 ```
   va r sourcemaps = require('gulp-sourcemaps');
@@ -57,6 +63,15 @@ SS
     .pipe(gulp.dest('./css'));
   });
 ```
+
+### gulp-rev
+
+文件名称修改
+
+### pump  gulp-uglify
+
+uglify 用来压缩js
+pump用来收集error信息，并处理。
 
 
 
