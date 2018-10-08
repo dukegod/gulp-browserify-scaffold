@@ -1,7 +1,5 @@
 ## gulp-es6-sass-browserify
 
-主要验证es6与css3在实际开发中支持度
-
 目录说明：
 
 - dist 作为开发目录
